@@ -2,7 +2,7 @@
 
 A modular Python inference framework built on Hugging Face Transformers and PyTorch.
 Supports text, vision, audio, and multimodal workloads through a consistent
-4-stage pipeline: **load → preprocess → infer → postprocess**.
+4 stage pipeline: **load - preprocess - infer - postprocess**.
 
 ## Project Structure
 
