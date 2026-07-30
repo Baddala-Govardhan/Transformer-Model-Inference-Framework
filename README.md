@@ -4,25 +4,6 @@ A modular Python inference framework built on Hugging Face Transformers and PyTo
 Supports text, vision, audio, and multimodal workloads through a consistent
 4 stage pipeline: **load - preprocess - infer - postprocess**.
 
-## Project Structure
-
-```
-transformer_inference_framework/
-├── core/
-│   ├── model_loader.py      # Stage 1: load pretrained model + processor
-│   ├── preprocessor.py      # Stage 2: raw input -> tensors
-│   ├── inference_engine.py  # Stage 3: forward pass / generate()
-│   └── output_handler.py    # Stage 4: tensors -> readable result
-├── modalities/
-│   ├── text_pipeline.py
-│   ├── vision_pipeline.py
-│   ├── audio_pipeline.py
-│   └── multimodal_pipeline.py
-├── pipeline.py               # single entrypoint: run(model_name, modality, data)
-├── scripts/                  # runnable demos per modality
-├── tests/                    # unit tests per core component
-└── api/main.py                # FastAPI wrapper over pipeline.run()
-```
 
 ## Setup
 
@@ -168,12 +149,12 @@ curl -X POST http://localhost:8000/infer/audio \
   -F "file=@path/to/audio.wav"
 ```
 
-## Verified results (from real, live runs — not simulated)
+## Verified results
 
 Every component below was actually executed against a real downloaded model, not just
 unit-tested with mocks. Two real bugs were found and fixed this way (a mislabeled text
 classification output, and a multimodal pipeline that ran without crashing but returned
-no usable result) — see the "Which Hugging Face models will actually work here" section
+no usable result) - see the "Which Hugging Face models will actually work here" section
 above for the constraints these tests confirmed.
 
 | Check | Command | Result |
